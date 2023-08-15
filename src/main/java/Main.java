@@ -1,27 +1,42 @@
 import org.apache.commons.io.IOUtils;
+
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Main {
 
-    public String readRawDataToString() throws Exception{
+    public String readRawDataToString() throws Exception {
         ClassLoader classLoader = getClass().getClassLoader();
         String result = IOUtils.toString(classLoader.getResourceAsStream("RawData.txt"));
         return result;
     }
 
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
         String output = (new Main()).readRawDataToString();
-        System.out.println(output);
-        ArrayList<String> outputInArrayList = JerSon.jersonSplit(output);
-        //System.out.println(outputInArrayList.toString());
-        System.out.println(JerSon.modifiedArrayList(outputInArrayList));
-        String[] temp =  JerSon.modifiedArrayList(outputInArrayList).toArray(new String[0]);
+        //System.out.println(output);
+        ArrayList<String> outputInArrayList = JerSon.jersonSplit(output); //conver RawData to ArrayList
+        ////conver outputInA to "\n" lines
+        ArrayList<String> modifiedArrayLIst = JerSon.modifiedArrayList(outputInArrayList);
 
-        for (String s : temp) {
-            System.out.println(s);
-        }
+        //for some case create array, maybe will be not needed
+        String[] temp = JerSon.modifiedArrayList(outputInArrayList).toArray(new String[0]);
+        //System.out.println(modifiedArrayLIst.get(0).toString());
+//        for (String s : temp) {
+//            System.out.println(s);
+//        }
 
-        //System.out.println(temp.toString());
+        //grap needed words from string
+        GroceryList.arrayLooping(modifiedArrayLIst);
+        System.out.println(GroceryList.checkSize());
+        System.out.println(GroceryList.groceryListToString());
+
+        GroceryMap.runAllNameFinders();
+
+
     }
+
 }
+
+
