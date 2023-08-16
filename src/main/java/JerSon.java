@@ -56,13 +56,25 @@ public class JerSon {
         String regex = "[nN]\\w+:(\\w*)";
         Pattern patternName = Pattern.compile(regex);
         Matcher matcher = patternName.matcher(input);
+
+        String regex2 = "([nN]:)([^;^]+)";
+        Pattern pattern2 = Pattern.compile(regex2);
+        Matcher matcher2 = pattern2.matcher(input);
+
         if (matcher.find()) {
             String itemNAme = matcher.group(1);
             return itemNAme;
-        } else {
+        }
+        else if (matcher2.find()) {
+            String newItemName = matcher.group(1) + "\"\"";
+            return matcher.replaceFirst(newItemName);
+        }
+        else {
             return null;
         }
     }
+
+
 
     public static Double findPrice(String inputStr) {
         String regex = "[pP]\\w+:(\\d+\\.?\\d*)";      //"[pP]\\w+:(\\w*)";

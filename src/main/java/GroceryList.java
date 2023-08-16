@@ -8,8 +8,6 @@ public class GroceryList {
     public static ArrayList<GroceryItems> list = new ArrayList<>();
 
 
-
-
     public static GroceryItems create(String expectedName, Double expectedPrice, String expectedType, String expectedData) {
         GroceryItems item = new GroceryItems(expectedName, expectedPrice, expectedType, expectedData);
         list.add(item);
@@ -22,6 +20,8 @@ public class GroceryList {
             Double tempPrice = JerSon.findPrice(input.get(i));
             String tempType = JerSon.findType(input.get(i));
             String tempData = JerSon.findData(input.get(i));
+            //JerSon.findAndReplacePattern(input.get(i));
+
             create(tempName, tempPrice, tempType, tempData);
         }
     }
@@ -34,8 +34,6 @@ public class GroceryList {
         }
         return result.toString();
     }
-
-
 
 
     public static Integer checkSize() {

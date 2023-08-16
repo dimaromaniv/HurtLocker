@@ -17,17 +17,12 @@ public class Main {
         String output = (new Main()).readRawDataToString();
         //System.out.println(output);
         ArrayList<String> outputInArrayList = JerSon.jersonSplit(output); //conver RawData to ArrayList
-        ////conver outputInA to "\n" lines
+
+        ////convert outputInA to "\n" lines
         ArrayList<String> modifiedArrayLIst = JerSon.modifiedArrayList(outputInArrayList);
 
         //for some case create array, maybe will be not needed
-        String[] temp = JerSon.modifiedArrayList(outputInArrayList).toArray(new String[0]);
-        //System.out.println(modifiedArrayLIst.get(0).toString());
-//        for (String s : temp) {
-//            System.out.println(s);
-//        }
 
-        //grap needed words from string
         GroceryList.arrayLooping(modifiedArrayLIst);
         System.out.println(GroceryList.checkSize());
         System.out.println(GroceryList.groceryListToString());
