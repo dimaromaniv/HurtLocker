@@ -16,7 +16,7 @@ public class GroceryList {
 
     public static void arrayLooping(ArrayList<String> input) {
         for (int i = 0; i < input.size(); i++) {
-            String tempName = JerSon.findName(input.get(i));
+            String tempName = JerSon.modifyName(JerSon.findName(input.get(i)));
             Double tempPrice = JerSon.findPrice(input.get(i));
             String tempType = JerSon.findType(input.get(i));
             String tempData = JerSon.findData(input.get(i));

@@ -50,6 +50,31 @@ public class JerSon {
         return result;
     }
 
+    public static String modifyName(String input) {
+        StringBuilder temp = new StringBuilder(input);
+       // String firstLetter = temp.substring(0,1);
+       // temp = temp.replace(0,1,firstLetter);
+        StringBuilder sb =new StringBuilder();
+
+        for (int i = 0 ; i < temp.length() ; i++) {
+            char ch = temp.charAt(i);
+            if (Character.isUpperCase(ch)) {
+               ch = Character.toLowerCase(ch);
+                sb.append(ch);
+            }else {
+                sb.append(ch);
+            }
+            sb.replace(0,1, String.valueOf(Character.toUpperCase(temp.charAt(0))));
+        }
+
+        for(int i = 0 ; i < sb.length() ; i++){
+            if (sb.charAt(i) == '0') {
+                sb.replace(i,i + 1,"o");
+            }
+        }
+        return sb.toString();
+    }
+
     public static String findName(String input) {
 //        String input = inputListArr.get(0);
 
@@ -64,16 +89,13 @@ public class JerSon {
         if (matcher.find()) {
             String itemNAme = matcher.group(1);
             return itemNAme;
-        }
-        else if (matcher2.find()) {
+        } else if (matcher2.find()) {
             String newItemName = matcher.group(1) + "\"\"";
             return matcher.replaceFirst(newItemName);
-        }
-        else {
+        } else {
             return null;
         }
     }
-
 
 
     public static Double findPrice(String inputStr) {
@@ -129,4 +151,4 @@ public class JerSon {
 
 
 
-    
+

@@ -24,8 +24,8 @@ public class Main {
         //for some case create array, maybe will be not needed
 
         GroceryList.arrayLooping(modifiedArrayLIst);
-        System.out.println(GroceryList.checkSize());
-        System.out.println(GroceryList.groceryListToString());
+//        System.out.println(GroceryList.checkSize());
+//        System.out.println(GroceryList.groceryListToString());
 
         GroceryMap.runAllNameFinders();
 
